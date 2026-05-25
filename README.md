@@ -2,7 +2,7 @@
 
 ## About the Workshop
 
-This workshop was guided by **Dr. William Hahn**, with valued collaboration from **Dr. Natalia Romero**. Together they brought together consultants from SLR Consulting, Avaanz, and Malk to explore how AI-assisted development can accelerate real consulting work.
+This workshop was guided by **Dr. William Hahn**, in collaboration from **Dr. Natalia Romero**. Together they brought together consultants from SLR Consulting, Avaanz, and Malk to explore how AI-assisted development can accelerate real consulting work.
 
 Participants with no prior coding background shipped working tools by day three — proof that with the right environment, guidance, and support, anyone can build with AI. In just three days, this group tackled genuine business problems and delivered solutions that are already finding their way into day-to-day work.
 
