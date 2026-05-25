@@ -30,19 +30,8 @@
     --malk-bdr: #9ac0da;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    min-height: 100vh;
-  }
-  body::before {
-    content: '';
-    display: block;
-    height: 4px;
-    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-mid) 60%, #6dbfb0 100%);
-  }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-weight: 400; min-height: 100vh; }
+  body::before { content: ''; display: block; height: 4px; background: linear-gradient(90deg, var(--teal) 0%, var(--teal-mid) 60%, #6dbfb0 100%); }
   .page { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
   .hero { margin-bottom: 2.5rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
   .hero-left {}
@@ -131,8 +120,8 @@
   <div class="divider"></div>
   <div class="stats-bar">
     <div class="stat"><div class="stat-val">8</div><div class="stat-label">Participants</div></div>
-    <div class="stat"><div class="stat-val">6</div><div class="stat-label">Submitted</div></div>
-    <div class="stat"><div class="stat-val">8</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-val">7</div><div class="stat-label">Submitted</div></div>
+    <div class="stat"><div class="stat-val">11</div><div class="stat-label">Projects</div></div>
     <div class="stat"><div class="stat-val">3</div><div class="stat-label">Companies</div></div>
   </div>
   <div class="toolbar">
@@ -172,6 +161,14 @@ const people = [
     ]
   },
   {
+    id:2, name:"Ryan Strom", initials:"RS", co:"slr", company:"SLR Consulting",
+    projects:[
+      {url:"https://ryankstrom.github.io/kidsport/", name:"KidSport", desc:"A schedule consolidation app for youth volleyball parents. Consolidates publicly available Volleyball Canada data into a clean, parent-friendly view showing upcoming games, locations, opponents, and team standings — all in one place. Saw great uptake from parents on a U18 volleyball team."},
+      {url:"#", name:"Jasper00", desc:"Work-in-progress app for interacting with LoRaWAN devices — assigning them to projects, creating companies and locations, and pairing devices with gateways. Uses the mydevices.com live API. Authentication is still being sorted before publishing publicly."},
+      {url:"https://arduinotilt.web.app/", name:"Arduino Tilt Meter", desc:"A script pushed to an Arduino that reads a tilt sensor's state and outputs it to a 4-digit LED screen, while simultaneously serving a live web app via GCP showing the same data in real time. Claude helped navigate Arduino pin configuration and USB interface testing without needing to learn the full Arduino ecosystem."}
+    ]
+  },
+  {
     id:4, name:"J. Maxwell", initials:"JM", co:"ava", company:"Avaanz",
     projects:[
       {url:"https://github.com/VeryImportantBusinesBoy/SLRWiki", name:"SLRWiki", desc:"A structured knowledge base of 210 SLR Consulting (Canada) proposals (2021–2026), built as a Karpathy-style LLM wiki. Covers 66 named staff, clients, 13 service lines, offices and years — queryable by AI assistants during proposal writing and BD work."}
@@ -197,7 +194,6 @@ const people = [
   }
 ];
 const pending = [
-  {id:2, name:"Ryan Strom", initials:"RS", co:"slr", company:"SLR Consulting"},
   {id:3, name:"Dan Harvey", initials:"DH", co:"slr", company:"SLR Consulting"},
 ];
 let activeFilter = 'all';
