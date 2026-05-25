@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SLR Showcase 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #f4f5f2;
+    --bg2:      #ffffff;
+    --bg3:      #eef0ec;
+    --border:   #dde0d8;
+    --border2:  #c8ccc2;
+    --text:     #1a1f17;
+    --text2:    #4a5244;
+    --text3:    #8a9282;
+    --teal:     #2e7d6b;
+    --teal-mid: #3a9e87;
+    --teal-lt:  #e6f3f0;
+    --teal-bdr: #a8d5cc;
+    --slr:      #2e7d6b;
+    --slr-dim:  #e6f3f0;
+    --slr-bdr:  #a8d5cc;
+    --ava:      #5a7a3a;
+    --ava-dim:  #edf3e6;
+    --ava-bdr:  #b8d09a;
+    --malk:     #2a5f8a;
+    --malk-dim: #e6eff7;
+    --malk-bdr: #9ac0da;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    min-height: 100vh;
+  }
+
+  /* Subtle top stripe */
+  body::before {
+    content: '';
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--teal) 0%, var(--teal-mid) 60%, #6dbfb0 100%);
+  }
+
+  .page { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+  /* ── Hero ── */
+  .hero { margin-bottom: 2.5rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+  .hero-left {}
+  .hero-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--teal); margin-bottom: 0.65rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hero-eyebrow::before { content:''; width:20px; height:2px; background:var(--teal); display:inline-block; border-radius:2px; }
+  .hero-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1; color: var(--text); margin-bottom: 0.75rem;
+  }
+  .hero-title em { font-style: italic; color: var(--teal); }
+  .hero-sub { font-size: 15px; color: var(--text2); max-width: 500px; line-height: 1.7; }
+
+  .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+  .live-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 500; padding: 5px 13px; border-radius: 20px;
+    background: var(--teal-lt); border: 1px solid var(--teal-bdr); color: var(--teal);
+  }
+  .live-dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .co-pills { display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; }
+  .co-pill { font-size:11px; font-weight:500; padding:4px 11px; border-radius:20px; border:1px solid; white-space:nowrap; }
+  .co-pill-slr  { background:var(--slr-dim);  color:var(--slr);  border-color:var(--slr-bdr); }
+  .co-pill-ava  { background:var(--ava-dim);  color:var(--ava);  border-color:var(--ava-bdr); }
+  .co-pill-malk { background:var(--malk-dim); color:var(--malk); border-color:var(--malk-bdr); }
+
+  /* ── Divider ── */
+  .divider { height:1px; background:var(--border); margin-bottom:2rem; }
+
+  /* ── Stats ── */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+    gap: 1px; background: var(--border); border-radius: 12px;
+    overflow: hidden; border: 1px solid var(--border); margin-bottom: 2rem;
+  }
+  .stat { background: var(--bg2); padding: 1.1rem 1.4rem; }
+  .stat-val { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--teal); line-height:1; margin-bottom:3px; }
+  .stat-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; }
+
+  /* ── Toolbar ── */
+  .toolbar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:1.5rem; align-items:center; }
+  .search-wrap { position:relative; flex:1; min-width:200px; }
+  .search-wrap input {
+    width:100%; padding:9px 14px 9px 38px; font-size:13px;
+    border-radius:8px; border:1px solid var(--border);
+    background:var(--bg2); color:var(--text); font-family:'DM Sans',sans-serif;
+    outline:none; transition:border-color .2s;
+  }
+  .search-wrap input::placeholder { color:var(--text3); }
+  .search-wrap input:focus { border-color:var(--teal-bdr); }
+  .search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--text3); pointer-events:none; }
+  .filter-btn {
+    font-size:12px; font-weight:500; padding:7px 15px; border-radius:20px;
+    border:1px solid var(--border); background:var(--bg2); color:var(--text2);
+    cursor:pointer; transition:all .15s; font-family:'DM Sans',sans-serif; white-space:nowrap;
+  }
+  .filter-btn:hover { border-color:var(--border2); color:var(--text); }
+  .filter-btn.active { background:var(--teal); border-color:var(--teal); color:#fff; }
+
+  /* ── Grid ── */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(330px,1fr)); gap:14px; }
+
+  /* ── Card ── */
+  .card {
+    background:var(--bg2); border:1px solid var(--border);
+    border-radius:14px; padding:1.4rem 1.5rem;
+    transition: border-color .2s, box-shadow .2s;
+    animation: fadeUp .35s ease both;
+  }
+  .card:hover { border-color:var(--teal-bdr); box-shadow:0 4px 20px rgba(46,125,107,0.08); }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .card-head { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:1rem; gap:10px; }
+  .card-av-name { display:flex; align-items:center; gap:10px; }
+  .av {
+    width:40px; height:40px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:600; flex-shrink:0;
+  }
+  .av-slr  { background:var(--slr-dim);  color:var(--slr); }
+  .av-ava  { background:var(--ava-dim);  color:var(--ava); }
+  .av-malk { background:var(--malk-dim); color:var(--malk); }
+  .person-name { font-size:15px; font-weight:600; color:var(--text); line-height:1.2; }
+  .person-co { font-size:12px; color:var(--text3); margin-top:2px; display:flex; align-items:center; gap:4px; }
+  .co-dot { width:6px; height:6px; border-radius:50%; flex-shrink:0; }
+  .co-dot-slr  { background:var(--slr); }
+  .co-dot-ava  { background:var(--ava); }
+  .co-dot-malk { background:var(--malk); }
+  .project-count {
+    font-size:11px; font-weight:600; padding:3px 9px; border-radius:10px;
+    background:var(--bg3); color:var(--text3); white-space:nowrap; margin-top:3px;
+    border:1px solid var(--border);
+  }
+
+  /* ── Projects ── */
+  .projects { display:flex; flex-direction:column; gap:9px; }
+  .project {
+    background:var(--bg3); border-radius:9px; padding:11px 13px;
+    border:1px solid var(--border);
+  }
+  .project-repo { display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+  .gh-svg { flex-shrink:0; color:var(--text3); }
+  .project-link {
+    font-size:12px; font-weight:600; color:var(--teal); text-decoration:none;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1;
+  }
+  .project-link:hover { text-decoration:underline; }
+  .ext-icon { flex-shrink:0; color:var(--text3); }
+  .project-desc { font-size:12px; color:var(--text2); line-height:1.62; }
+
+  /* ── Pending ── */
+  .pending-section { margin-top:2.5rem; }
+  .pending-heading {
+    font-size:11px; font-weight:600; letter-spacing:0.1em;
+    text-transform:uppercase; color:var(--text3); margin-bottom:1rem;
+    display:flex; align-items:center; gap:8px;
+  }
+  .pending-heading::before { content:''; flex:1; max-width:30px; height:1px; background:var(--border); }
+  .card-pending { opacity:0.5; }
+  .pending-label { font-size:13px; color:var(--text3); font-style:italic; padding:4px 0; }
+
+  /* ── Footer ── */
+  .footer {
+    margin-top:4rem; padding-top:1.5rem; border-top:1px solid var(--border);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  .footer-logo { font-family:'DM Serif Display',serif; font-size:16px; color:var(--teal); }
+  .footer-note { font-size:12px; color:var(--text3); }
+
+  /* ── Empty ── */
+  .empty { text-align:center; padding:3rem; color:var(--text3); font-size:14px; grid-column:1/-1; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">AI Workshop</div>
+      <h1 class="hero-title">SLR Showcase <em>2026</em></h1>
+      <p class="hero-sub">Real tools built by consultants in three days. Each project solves a genuine business problem using AI and modern development practices.</p>
+    </div>
+    <div class="hero-right">
+      <span class="live-badge"><span class="live-dot"></span>Live repos</span>
+      <div class="co-pills">
+        <span class="co-pill co-pill-slr">SLR Consulting</span>
+        <span class="co-pill co-pill-ava">Avaanz</span>
+        <span class="co-pill co-pill-malk">Malk</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-val">8</div><div class="stat-label">Participants</div></div>
+    <div class="stat"><div class="stat-val">5</div><div class="stat-label">Submitted</div></div>
+    <div class="stat"><div class="stat-val">6</div><div class="stat-label">Projects</div></div>
+    <div class="stat"><div class="stat-val">3</div><div class="stat-label">Companies</div></div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-wrap">
+      <svg class="search-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search" placeholder="Search by name, company or project…" oninput="filterCards()">
+    </div>
+    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+    <button class="filter-btn" onclick="setFilter('slr',this)">SLR Consulting</button>
+    <button class="filter-btn" onclick="setFilter('ava',this)">Avaanz</button>
+    <button class="filter-btn" onclick="setFilter('malk',this)">Malk</button>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <div class="pending-section" id="pending-section">
+    <div class="pending-heading">Awaiting submission</div>
+    <div class="grid" id="pending-grid"></div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-logo">SLR Showcase 2026</span>
+    <span class="footer-note">More projects being added as submissions arrive.</span>
+  </div>
+
+</div>
+<script>
+const people = [
+  {
+    id:1, name:"Jen White", initials:"JW", co:"slr", company:"SLR Consulting",
+    projects:[
+      {url:"https://github.com/jenwhite-pip/procurement-dashboard", name:"procurement-dashboard", desc:"An early version of an Opportunities Dashboard built as part of the workshop. Sources from 2 procurement websites, updates at 7AM Eastern daily, and is driven by search terms from the Canadian Proposal team."},
+      {url:"https://github.com/jenwhite-pip/events", name:"events", desc:"Re-engineered Conference Request Tool. Helps plan, budget, and track client and business development events globally. Allows users to create and request event attendance approvals."}
+    ]
+  },
+  {
+    id:4, name:"J. Maxwell", initials:"JM", co:"ava", company:"Avaanz",
+    projects:[
+      {url:"https://github.com/VeryImportantBusinesBoy/SLRWiki", name:"SLRWiki", desc:"A structured knowledge base of 210 SLR Consulting (Canada) proposals (2021–2026), built as a Karpathy-style LLM wiki. Covers 66 named staff, clients, 13 service lines, offices and years — queryable by AI assistants during proposal writing and BD work."}
+    ]
+  },
+  {
+    id:5, name:"Ally Holtz", initials:"AH", co:"malk", company:"Malk",
+    projects:[
+      {url:"https://github.com/AllyHoltz21/ddq-tool", name:"ddq-tool", desc:"DDQ Management Platform that ingests source documents and historical DDQs, organizes responses, and auto-populates new DDQs."}
+    ]
+  },
+  {
+    id:6, name:"Abigail Flatau", initials:"AF", co:"malk", company:"Malk",
+    projects:[
+      {url:"https://github.com/aflatau1/outside-in-dd", name:"outside-in-dd", desc:"Outside-in due diligence tool for private equity targets. Enter a few high-level details on a target and get a structured report with findings across material ESG issue areas sourced from public data."}
+    ]
+  },
+  {
+    id:7, name:"Kyle Curtin", initials:"KC", co:"malk", company:"Malk",
+    projects:[
+      {url:"https://github.com/kylecurtin/vc-rec-helper-v2", name:"vc-rec-helper-v2", desc:"Internal tool that converts a target investment's CIM into structured, quantified sustainability value creation recommendations. LLM-driven — currently running as a demo version pending API billing setup."}
+    ]
+  }
+];
+
+const pending = [
+  {id:0, name:"Craig Johnston", initials:"CJ", co:"slr", company:"SLR Consulting"},
+  {id:2, name:"Ryan Strom",     initials:"RS", co:"slr", company:"SLR Consulting"},
+  {id:3, name:"Dan Harvey",     initials:"DH", co:"slr", company:"SLR Consulting"},
+];
+
+let activeFilter = 'all';
+
+function ghIcon(){
+  return `<svg class="gh-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>`;
+}
+function extIcon(){
+  return `<svg class="ext-icon" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+}
+
+function renderCard(p, delay){
+  const projects = p.projects.map(proj=>`
+    <div class="project">
+      <div class="project-repo">
+        ${ghIcon()}
+        <a class="project-link" href="${proj.url}" target="_blank">${proj.name}</a>
+        ${extIcon()}
+      </div>
+      <div class="project-desc">${proj.desc}</div>
+    </div>`).join('');
+  return `
+  <div class="card" style="animation-delay:${delay}ms"
+       data-co="${p.co}"
+       data-name="${p.name.toLowerCase()}"
+       data-projects="${p.projects.map(x=>x.name+' '+x.desc).join(' ').toLowerCase()}">
+    <div class="card-head">
+      <div class="card-av-name">
+        <div class="av av-${p.co}">${p.initials}</div>
+        <div>
+          <div class="person-name">${p.name}</div>
+          <div class="person-co"><span class="co-dot co-dot-${p.co}"></span>${p.company}</div>
+        </div>
+      </div>
+      <div class="project-count">${p.projects.length} project${p.projects.length>1?'s':''}</div>
+    </div>
+    <div class="projects">${projects}</div>
+  </div>`;
+}
+
+function renderPendingCard(p, delay){
+  return `
+  <div class="card card-pending" style="animation-delay:${delay}ms"
+       data-co="${p.co}" data-name="${p.name.toLowerCase()}" data-projects="">
+    <div class="card-head">
+      <div class="card-av-name">
+        <div class="av av-${p.co}">${p.initials}</div>
+        <div>
+          <div class="person-name">${p.name}</div>
+          <div class="person-co"><span class="co-dot co-dot-${p.co}"></span>${p.company}</div>
+        </div>
+      </div>
+    </div>
+    <div class="pending-label">Submission pending…</div>
+  </div>`;
+}
+
+function setFilter(f, btn){
+  activeFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  filterCards();
+}
+
+function filterCards(){
+  const q = document.getElementById('search').value.toLowerCase();
+  let anyPending = false;
+  document.querySelectorAll('#grid .card, #pending-grid .card').forEach(card=>{
+    const coMatch = activeFilter==='all' || card.dataset.co===activeFilter;
+    const qMatch = !q || card.dataset.name.includes(q) || card.dataset.projects.includes(q);
+    card.style.display = (coMatch && qMatch) ? '' : 'none';
+  });
+  document.querySelectorAll('#pending-grid .card').forEach(c=>{ if(c.style.display!=='none') anyPending=true; });
+  document.getElementById('pending-section').style.display = anyPending ? '' : 'none';
+}
+
+document.getElementById('grid').innerHTML = people.map((p,i)=>renderCard(p,i*55)).join('');
+document.getElementById('pending-grid').innerHTML = pending.map((p,i)=>renderPendingCard(p,i*55)).join('');
+</script>
+</body>
+</html>
